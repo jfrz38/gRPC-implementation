@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+message Player {
+    string id = 1;
+    string name = 2;
+    string lastname = 3;
+    string position = 4;
+    int32 age = 5;
+    Team team = 6;
+}
+
+message Team {
+    string id = 1;
+    string city = 2;
+    string name = 3;
+    repeated Player players = 4;
+}
+
+service FootballService {
+    rpc GetAllPlayers (Empty) returns (PlayersList) {}
+    rpc AddPlayer(Player) returns (Empty) {}
+    rpc DeletePlayer(Id) returns (Empty) {}
+
+    rpc GetAllTeams(Empty) returns (TeamList) {}
+    rpc AddTeam(Team) returns (Empty) {}
+    rpc DeleteTeam(Id) returns (Empty) {}
+}
+
+message Empty {}
+
+message PlayersList {
+   repeated Player players = 1;
+}
+message TeamList {
+    repeated Player teams = 1;
+ }
+message Id {
+    int32 id = 1;
+}
