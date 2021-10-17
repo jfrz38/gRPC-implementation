@@ -1,33 +1,64 @@
 const assert = require('assert/strict');
 const client = require("./client/client");
 
-const playerToAdd = { name: "name3", lastname: "ln3", position: "p3", age: 3, team: { id: 1 } }
+/*client.getAllTeams({}, (error, response) => {
+    if(error) console.log(error)
+    else console.log(response)
+})*/
 
-client.getAllPlayers({}, (error, response) => {
-    console.log("GET all players")
-    if (error) console.log(error)
-    else assert.deepEqual(['1', '2'], response.players.map(player => player.id))
+client.getTeam({id:1}, (error, response) => {
+    assert.deepEqual(error, null)
+    assert.deepEqual(response.id, 1)
 })
 
-client.addPlayer(playerToAdd, (error, response) => {
-    console.log("Add player n.3")
-    if (error) console.log(error)
+client.getTeam({id:10}, (error, response) => {
+    // Error not found
+    assert.deepEqual(error.code, 5)
 })
 
-client.getAllPlayers({}, (error, response) => {
-    console.log("Check if player n.3 is returned")
-    if (error) console.log(error)
-    else assert.deepEqual(['1', '2', '3'], response.players.map(player => player.id))
+client.getPlayer({id:1}, (error,response) => {
+    assert.deepEqual(error, null)
+    assert.deepEqual(response.id, 1)
 })
 
-client.deletePlayer({ id: 3 }, (error, response) => {
-    console.log("Remove player n.3")
-    if (error) console.log(error)
+client.getPlayer({id:10}, (error,response) => {
+    // Error not found
+    assert.deepEqual(error.code, 5)
 })
 
-client.getAllPlayers({}, (error, response) => {
-    console.log("Check if player n.3 is returned")
-    if (error) console.log(error)
-    else assert.deepEqual(['1', '2'], response.players.map(player => player.id))
+client.deleteTeam({id:1}, (error, response) => {
+    assert.deepEqual(error,null)
+})
+
+client.getTeam({id:1}, (error, response) => {
+    // Error not found
+    assert.deepEqual(error.code, 5)
+})
+
+client.deletePlayer({id:1}, (error, response) => {
+    assert.deepEqual(error,null)
+})
+
+client.getPlayer({id:1}, (error,response) => {
+    // Error not found
+    assert.deepEqual(error.code, 5)
+})
+
+client.addPlayer({name:'n3',lastname:'ln3',position:'p3',age:3, team:1}, (error, response) => {
+    assert.deepEqual(error, null)
+})
+
+client.getPlayer({id:3}, (error, response) => {
+    assert.deepEqual(error, null)
+    assert.deepEqual(response.id, 3)
+})
+
+client.addTeam({name:'t2', city:'c2'}, (error, response) => {
+    assert.deepEqual(error, null)
+})
+
+client.getTeam({id:2}, (error, response) => {
+    assert.deepEqual(error, null)
+    assert.deepEqual(response.id, 2)
 })
 
