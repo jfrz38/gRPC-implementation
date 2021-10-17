@@ -19,8 +19,8 @@ db.connect()
 
 server.addService(newsProto.FootballService.service, {
     getAllPlayers: (_, callback) => {
-        db.getPlayers(call.request.id).then(players => {
-            callback(null, player)
+        db.getPlayers().then(players => {
+            callback(null, players)
         })
     },
     getPlayer:(call, callback) => {

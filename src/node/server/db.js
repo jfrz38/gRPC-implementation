@@ -61,7 +61,7 @@ module.exports.getTeam = (id) => {
 
 module.exports.getPlayers = () => {
     return new Promise((resolve, reject) => {
-        db.get(`SELECT * from player p`, (err, response) => {
+        db.all(`SELECT * from player p`, (err, response) => {
             if(err) reject(err)
             resolve(response)
         })
