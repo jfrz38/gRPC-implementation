@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="./WebComponents/servers-list.js"></script>
+  </head>
+  <body>
+    <button
+      class="tablink"
+      onclick="openPage('Node.JS', this)"
+      id="defaultOpen"
+    >
+      Node.JS
+    </button>
+    <button class="tablink" onclick="openPage('c#', this)">c#</button>
+    <button class="tablink" onclick="openPage('Python', this)">Python</button>
+    <button class="tablink" onclick="openPage('Java', this)">Java</button>
+
+    <div id="Node.JS" class="tabcontent">
+      <div class="column" style="width: 20%">
+        <h3>Node</h3>
+        <servers-list type="node"></servers-list>
+      </div>
+      <div class="column vertical-line" style="width: 10px;"></div>
+      <div class="column" style="width: 70%">div</div>
+    </div>
+
+    <div id="c#" class="tabcontent">
+      <h3>Csharp</h3>
+      <servers-list type="csharp"></servers-list>
+    </div>
+
+    <div id="Python" class="tabcontent">
+      <h3>Python</h3>
+      <servers-list type="python"></servers-list>
+    </div>
+
+    <div id="Java" class="tabcontent">
+      <h3>Java</h3>
+      <servers-list type="java"></servers-list>
+    </div>
+
+    <script>
+      document.getElementById("defaultOpen").click();
+    </script>
+  </body>
+</html>
