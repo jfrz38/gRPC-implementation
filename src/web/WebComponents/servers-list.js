@@ -1,10 +1,7 @@
-//import render from './render';
-
 export default class serversList extends HTMLElement {
     constructor() {
         super();
         const type = this.getAttribute('type')
-        console.log("type = ",type)
         this.render()
     }
 

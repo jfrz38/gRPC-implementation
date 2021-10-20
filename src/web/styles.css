@@ -85,6 +85,7 @@ ul.timeline:after
 .column {
   float:left;
   margin-right:-4px;
+  height: 100%;
 }
 
 .vertical-line{
@@ -93,3 +94,29 @@ ul.timeline:after
   border-left: 1px solid #777;
   height: 500px;
 }
+
+input{
+  min-width: 400px;
+}
+
+input:disabled {
+  background: #dddddd;
+}
+
+td{
+  text-align: center; 
+  vertical-align: middle;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+textarea{
+  width: 100%;
+  height: 100%;
+  min-height: 120px;
+  resize: none;
+}
+
