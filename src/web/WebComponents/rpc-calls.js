@@ -20,8 +20,11 @@ export default class rpcCalls extends HTMLElement {
           </table>
             <h3>Response</h3>
           <textarea id="responseTextArea" readonly></textarea>
-          <p style="font-size: 10px;">*Calls do not use gRPC to communicate between frontend-backend because the needed of a proxy, Instead, to implements both gRPC producer and cosumer, the program do a HTTP query and the communication using gRPC is done in the backend.</p>
-          <p style="font-size: 10px;">A gRPC implementation where client is the frontend can be consulted <a href="https://github.com/jfrz38/ConnectionServicesTFM/tree/main/services/search">here</a>.</p>
+          <div  style="font-size: 10px;">
+            <p>* Calls do not use gRPC to communicate between frontend-backend because the needed of a proxy, To implements both gRPC producer and consumer on the backend, the program do an HTTP request and the communication using gRPC is done in the backend.</p>
+            <p>A gRPC implementation where client is the frontend can be consulted <a href="https://github.com/jfrz38/ConnectionServicesTFM/tree/main/services/search">here</a>.</p>
+            <p>By the way this approach allows to know how to implement a REST API in different languagues</p>
+          </div>
         </div>`
     }
 
@@ -61,14 +64,7 @@ export default class rpcCalls extends HTMLElement {
     }
 
     createInputPlaceholder(data){
-        var html = '{'
-        data.forEach((element, index) => {
-            html += element.value + ':'+ element.type
-            if(index !== data.length-1){
-                html += ","
-            }
-        })
-        return html + '}'
+        return `{${data.map(m => m.value + `:` + m.type).join(',')}}`
     }
 
     handleEvent(ev) {

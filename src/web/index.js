@@ -121,6 +121,7 @@ function callDeleteTeam(){
 }
 
 function doCall(url, port){
+    //TODO
     console.log("server = ",sessionStorage.getItem("server"))
     buttons.forEach(button => {
         var a = sessionStorage.getItem(button)
