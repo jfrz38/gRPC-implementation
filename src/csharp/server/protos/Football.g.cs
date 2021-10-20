@@ -26,15 +26,15 @@ public static partial class FootballReflection {
           "ZRgCIAEoCRIQCghsYXN0bmFtZRgDIAEoCRIQCghwb3NpdGlvbhgEIAEoCRIL",
           "CgNhZ2UYBSABKAUSDAoEdGVhbRgGIAEoBSIuCgRUZWFtEgoKAmlkGAEgASgF",
           "EgwKBGNpdHkYAiABKAkSDAoEbmFtZRgDIAEoCSIHCgVFbXB0eSInCgtQbGF5",
-          "ZXJzTGlzdBIYCgdwbGF5ZXJzGAEgAygLMgcuUGxheWVyIiIKCFRlYW1MaXN0",
-          "EhYKBXRlYW1zGAEgAygLMgcuUGxheWVyIhAKAklkEgoKAmlkGAEgASgFMowC",
-          "Cg9Gb290YmFsbFNlcnZpY2USJwoNR2V0QWxsUGxheWVycxIGLkVtcHR5Ggwu",
-          "UGxheWVyc0xpc3QiABIbCglHZXRQbGF5ZXISAy5JZBoHLlBsYXllciIAEh4K",
-          "CUFkZFBsYXllchIHLlBsYXllchoGLkVtcHR5IgASHQoMRGVsZXRlUGxheWVy",
-          "EgMuSWQaBi5FbXB0eSIAEiIKC0dldEFsbFRlYW1zEgYuRW1wdHkaCS5UZWFt",
-          "TGlzdCIAEhcKB0dldFRlYW0SAy5JZBoFLlRlYW0iABIaCgdBZGRUZWFtEgUu",
-          "VGVhbRoGLkVtcHR5IgASGwoKRGVsZXRlVGVhbRIDLklkGgYuRW1wdHkiAGIG",
-          "cHJvdG8z"));
+          "ZXJzTGlzdBIYCgdwbGF5ZXJzGAEgAygLMgcuUGxheWVyIiAKCFRlYW1MaXN0",
+          "EhQKBXRlYW1zGAEgAygLMgUuVGVhbSIQCgJJZBIKCgJpZBgBIAEoBTKMAgoP",
+          "Rm9vdGJhbGxTZXJ2aWNlEicKDUdldEFsbFBsYXllcnMSBi5FbXB0eRoMLlBs",
+          "YXllcnNMaXN0IgASGwoJR2V0UGxheWVyEgMuSWQaBy5QbGF5ZXIiABIeCglB",
+          "ZGRQbGF5ZXISBy5QbGF5ZXIaBi5FbXB0eSIAEh0KDERlbGV0ZVBsYXllchID",
+          "LklkGgYuRW1wdHkiABIiCgtHZXRBbGxUZWFtcxIGLkVtcHR5GgkuVGVhbUxp",
+          "c3QiABIXCgdHZXRUZWFtEgMuSWQaBS5UZWFtIgASGgoHQWRkVGVhbRIFLlRl",
+          "YW0aBi5FbXB0eSIAEhsKCkRlbGV0ZVRlYW0SAy5JZBoGLkVtcHR5IgBiBnBy",
+          "b3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -1063,12 +1063,12 @@ public sealed partial class TeamList : pb::IMessage<TeamList>
 
   /// <summary>Field number for the "teams" field.</summary>
   public const int TeamsFieldNumber = 1;
-  private static readonly pb::FieldCodec<global::Player> _repeated_teams_codec
-      = pb::FieldCodec.ForMessage(10, global::Player.Parser);
-  private readonly pbc::RepeatedField<global::Player> teams_ = new pbc::RepeatedField<global::Player>();
+  private static readonly pb::FieldCodec<global::Team> _repeated_teams_codec
+      = pb::FieldCodec.ForMessage(10, global::Team.Parser);
+  private readonly pbc::RepeatedField<global::Team> teams_ = new pbc::RepeatedField<global::Team>();
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public pbc::RepeatedField<global::Player> Teams {
+  public pbc::RepeatedField<global::Team> Teams {
     get { return teams_; }
   }
 

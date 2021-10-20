@@ -33,7 +33,7 @@ message PlayersList {
    repeated Player players = 1;
 }
 message TeamList {
-    repeated Player teams = 1;
+    repeated Team teams = 1;
  }
 message Id {
     int32 id = 1;
