@@ -3,7 +3,8 @@ const grpc = require("@grpc/grpc-js");
 const PROTO_PATH = "../football.proto";
 var protoLoader = require("@grpc/proto-loader");
 process.stdin.resume();
-
+var server = new grpc.Server()
+db.connect()
 const options = {
     keepCase: true,
     longs: String,
@@ -13,9 +14,6 @@ const options = {
 };
 var packageDefinition = protoLoader.loadSync(PROTO_PATH, options);
 const newsProto = grpc.loadPackageDefinition(packageDefinition);
-
-const server = new grpc.Server();
-db.connect()
 
 server.addService(newsProto.FootballService.service, {
     getAllPlayers: (_, callback) => {
@@ -81,4 +79,8 @@ function generateError(status) {
     let error = new Error()
     error.code = status
     return error
+}
+
+module.exports.initializeServer = () => {
+    
 }

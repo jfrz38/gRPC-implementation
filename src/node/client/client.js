@@ -1,6 +1,6 @@
 const grpc = require("@grpc/grpc-js");
 var protoLoader = require("@grpc/proto-loader");
-const PROTO_PATH = "./football.proto";
+const PROTO_PATH = "../football.proto";
 
 const options = {
   keepCase: true,

@@ -21,9 +21,9 @@ export default class rpcCalls extends HTMLElement {
             <h3>Response</h3>
           <textarea id="responseTextArea" readonly></textarea>
           <div  style="font-size: 10px;">
-            <p>* Calls do not use gRPC to communicate between frontend-backend because the needed of a proxy, To implements both gRPC producer and consumer on the backend, the program do an HTTP request and the communication using gRPC is done in the backend.</p>
+            <p>* Calls do not use gRPC to communicate between frontend-backend because the needed of a proxy. To implements both gRPC producer and consumer on the backend, the program do an HTTP request and the communication using gRPC is done in the backend.</p>
             <p>A gRPC implementation where client is the frontend can be consulted <a href="https://github.com/jfrz38/ConnectionServicesTFM/tree/main/services/search">here</a>.</p>
-            <p>By the way this approach allows to know how to implement a REST API in different languagues</p>
+            <p>By the way this approach allows to know how to implement a REST API in different languagues although the best practices have not been followed.</p>
           </div>
         </div>`
     }
