@@ -1,6 +1,6 @@
 const grpc = require("@grpc/grpc-js");
 var protoLoader = require("@grpc/proto-loader");
-const PROTO_PATH = "./football.proto";
+const PROTO_PATH = "./user.proto";
 
 const options = {
   keepCase: true,
@@ -12,9 +12,9 @@ const options = {
 
 var packageDefinition = protoLoader.loadSync(PROTO_PATH, options);
 
-const FootballService = grpc.loadPackageDefinition(packageDefinition).FootballService;
+const UserService = grpc.loadPackageDefinition(packageDefinition).UserService;
 
-const client = new FootballService(
+const client = new UserService(
   "localhost:50051",
   grpc.credentials.createInsecure()
 );

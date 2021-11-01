@@ -1,64 +1,60 @@
-const assert = require('assert/strict');
 const client = require("./client/client");
 
-/*client.getAllTeams({}, (error, response) => {
+client.getUser({id:1}, (error, response) => {
     if(error) console.log(error)
     else console.log(response)
-})*/
-
-client.getTeam({id:1}, (error, response) => {
-    assert.deepEqual(error, null)
-    assert.deepEqual(response.id, 1)
 })
 
-client.getTeam({id:10}, (error, response) => {
-    // Error not found
-    assert.deepEqual(error.code, 5)
+client.CreateUser({name:"Juan"}, (error, response) => {
+    if(error) console.log(error)
+    else console.log(response)
 })
 
-client.getPlayer({id:1}, (error,response) => {
-    assert.deepEqual(error, null)
-    assert.deepEqual(response.id, 1)
+client.getAllUsers({}, (error, response) => {
+    if(error) console.log(error)
+    else console.log(response)
 })
 
-client.getPlayer({id:10}, (error,response) => {
-    // Error not found
-    assert.deepEqual(error.code, 5)
-})
+getData = () => {
+    let call = client.getData({id:1})
+    var array = []
+    call.on('data', function (response) {
+        array.push(response.data.toString())
+    })
+    call.on('end', function () {
+        console.log("Data from user 1 = ",array.join(''))
+    })
+}
 
-client.deleteTeam({id:1}, (error, response) => {
-    assert.deepEqual(error,null)
-})
+addData = () => {
+    let call = client.addData(function(){})
+    const str = "Nueva cadena de texto"
+    for(const c of str){
+        call.write({id:1, data: Buffer.from(c, 'utf8')})
+    }
+    call.end()
+}
 
-client.getTeam({id:1}, (error, response) => {
-    // Error not found
-    assert.deepEqual(error.code, 5)
-})
+exchangeData = () => {
+    let call = client.ExchangeData()
+    // Read
+    let array = []
+    call.on('data', function (response){
+        array.push(response.data.toString())
+    })
+    call.on('end', function () {
+        console.log("Exchange data response = ",array.join(''))
+    })
+    //Write
+    const str = "Exchanging data"
+    for(const c of str){
+        call.write({id:1, data: Buffer.from(c, 'utf8')})
+    }
+    call.end()
+}
 
-client.deletePlayer({id:1}, (error, response) => {
-    assert.deepEqual(error,null)
-})
+//addData()
+//getData()
+//exchangeData()
 
-client.getPlayer({id:1}, (error,response) => {
-    // Error not found
-    assert.deepEqual(error.code, 5)
-})
-
-client.addPlayer({name:'n3',lastname:'ln3',position:'p3',age:3, team:1}, (error, response) => {
-    assert.deepEqual(error, null)
-})
-
-client.getPlayer({id:3}, (error, response) => {
-    assert.deepEqual(error, null)
-    assert.deepEqual(response.id, 3)
-})
-
-client.addTeam({name:'t2', city:'c2'}, (error, response) => {
-    assert.deepEqual(error, null)
-})
-
-client.getTeam({id:2}, (error, response) => {
-    assert.deepEqual(error, null)
-    assert.deepEqual(response.id, 2)
-})
 

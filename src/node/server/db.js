@@ -9,26 +9,15 @@ module.exports.connect = () => {
         }
         console.log("connected to db")
         db.serialize(function () {
-            db.run(`CREATE TABLE IF NOT EXISTS team (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                city varchar(255),
-                name varchar(255)
-                )`)
-            db.run(`CREATE TABLE IF NOT EXISTS player (
+            db.run(`CREATE TABLE IF NOT EXISTS User (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name varchar(255),
-                lastname varchar(255),
-                position varchar(255),
-                age INTEGER,
-                team INTEGER,
-                FOREIGN KEY(team) REFERENCES team(id)
+                data binary
                 )`)
 
-            db.run('INSERT INTO team(city, name) VALUES (?, ?)', ['c1', 'cityname1'])
-            db.run('INSERT INTO team(city, name) VALUES (?, ?)', ['c2', 'cityname2'])
-            db.run('INSERT INTO player(name, lastname, position, age, team) VALUES (?, ?, ?, ?, ?)', ['playername1', 'ln1', 'p1', 1, 1])
-            db.run('INSERT INTO player(name, lastname, position, age, team) VALUES (?, ?, ?, ?, ?)', ['playername2', 'ln2', 'p2', 2, 1])
-            db.run('INSERT INTO player(name, lastname, position, age, team) VALUES (?, ?, ?, ?, ?)', ['playername3', 'ln3', 'p3', 3, 2])   
+            db.run('INSERT INTO User(name, data) VALUES (?, ?)', ['Pepe', 'character string for Pepe'])
+            db.run('INSERT INTO User(name, data) VALUES (?, ?)', ['Paco', 'character string for Paco'])
+            db.run('INSERT INTO User(name, data) VALUES (?, ?)', ['Manolo', 'character string for Manolo'])
         })
     });
 }
@@ -41,6 +30,51 @@ module.exports.close = () => {
     })
 }
 
+module.exports.getAllUsers = async () => {
+    return new Promise((resolve, reject) => {
+        db.all(`SELECT * FROM User u`, (err, response) => {
+            if(err) reject(err)
+            resolve(response)
+        })
+    })
+}
+
+module.exports.getUser = async (id) => {
+    return new Promise((resolve, reject) => {
+        db.get(`SELECT * FROM User u WHERE u.id = ${id}`, (err, response) => {
+            if(err) reject(err)
+            resolve(response)
+        })
+    })
+}
+
+module.exports.createUser = async (name) => {
+    return new Promise((resolve, reject) => {
+        db.run('INSERT INTO User(name, data) VALUES (?, ?)', [name], (err, response) => {
+            if(err) reject(err)
+            resolve(response)
+        })
+    })
+}
+
+module.exports.getData = async (id) => {
+    return new Promise((resolve, reject) => {
+        db.get(`SELECT u.data FROM User u WHERE u.id = ${id}`, (err, response) => {
+            if(err) reject(err)
+            resolve(response)
+        })
+    })
+}
+
+module.exports.addData = async (id, data) => {
+    return new Promise((resolve, reject) => {
+        db.run(`UPDATE User SET data = "${data}" WHERE id = ${id}`, (err, response) => {
+            if(err) reject(err)
+            resolve(response)
+        })
+    })
+}
+/*
 module.exports.getTeams = async () => {
     return new Promise((resolve, reject) => {
         db.get(`SELECT * from team t`, (err, response) => {
@@ -114,3 +148,4 @@ module.exports.deleteTeam = (id) => {
         })
     })
 }
+*/
