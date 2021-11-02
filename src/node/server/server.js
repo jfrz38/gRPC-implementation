@@ -1,6 +1,7 @@
+var path = require('path');
 const db = require('./db')
 const grpc = require("@grpc/grpc-js");
-const PROTO_PATH = "../user.proto";
+const PROTO_PATH = path.resolve(__dirname, '../user.proto');
 var protoLoader = require("@grpc/proto-loader");
 process.stdin.resume();
 
