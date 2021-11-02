@@ -19,6 +19,7 @@ getData = () => {
     let call = client.getData({id:1})
     var array = []
     call.on('data', function (response) {
+        console.log("response = ",response.data.toString())
         array.push(response.data.toString())
     })
     call.on('end', function () {
@@ -53,8 +54,8 @@ exchangeData = () => {
     call.end()
 }
 
-//addData()
-//getData()
-//exchangeData()
+addData()
+getData()
+exchangeData()
 
 

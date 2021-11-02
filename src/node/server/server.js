@@ -50,6 +50,7 @@ server.addService(newsProto.UserService.service, {
     getData:(call, callback) => {
         db.getData(call.request.id).then(data => {
             for(const c of data.data){
+                console.log("writing: ",c)
                 call.write({data:Buffer.from(c, 'utf8')})
             }
             call.end()
