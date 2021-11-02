@@ -14,6 +14,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="System.Data.SQLite" Version="1.0.115" />
+    <Protobuf Include="protos\user.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>
