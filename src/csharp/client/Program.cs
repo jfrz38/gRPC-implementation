@@ -25,8 +25,6 @@ namespace grpcClient
                 await AddDataStreaming(client);
                 await ExchangeStreaming(client);
                 await channel.ShutdownAsync();
-
-
             }
             catch (RpcException ex)
             {
