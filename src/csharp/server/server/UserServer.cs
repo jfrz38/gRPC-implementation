@@ -36,11 +36,8 @@ namespace grpcServer
                     Console.WriteLine("Cancelled by the client");
                     return;
                 }
-                Console.Write($"{c.ToString()}");
                 await response.WriteAsync(new DataResponse { Data = ByteString.CopyFromUtf8(c.ToString()) });
             }
-            Console.WriteLine();
-            Console.WriteLine("---------");
         
         }
 

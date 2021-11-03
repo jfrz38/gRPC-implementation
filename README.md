@@ -6,12 +6,11 @@ Examples of gRPC implementation in different languages.
 
 |                          | c# | Java | Node.JS | Python |
 |--------------------------|----|------|---------|--------|
-| Unary calls              |    |      |    x    |        |
-| Client streaming         |    |      |    x    |        |
-| Server streaming         |    |      |    x    |        |
-| Bidirectional streaming  |    |      |    x    |        |
+| Unary calls              | x  |      |    x    |        |
+| Client streaming         | x  |      |    x    |        |
+| Server streaming         | x  |      |    x    |        |
+| Bidirectional streaming  | x  |      |    x    |        |
 | Interceptors             |    |      |         |        |
-| Deadlines                |    |      |         |        |
 | Deadlines                |    |      |         |        |
 | Cancellation             |    |      |         |        |
 | Error handling           |    |      |         |        |
@@ -29,3 +28,10 @@ Examples of gRPC implementation in different languages.
 | Debugging                |    |      |         |        |
 | gRPC Gateway             |    |      |         |        |
 | Health Checking Protocol |    |      |         |        |
+
+## Extras
+
+|                          | c# | Java | Node.JS | Python |
+|--------------------------|----|------|---------|--------|
+| Use mock DB              |    |      |    x    |        |
+| Use real DB              |    |      |         |        |
