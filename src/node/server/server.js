@@ -67,6 +67,7 @@ server.addService(newsProto.UserService.service, {
         })
         call.on('end', function(){
             db.addData(id, str)
+            call.end()
         })
 
         // Write
@@ -74,7 +75,6 @@ server.addService(newsProto.UserService.service, {
         for(const c of response){
             call.write({data:Buffer.from(c, 'utf8')})
         }
-        call.end()
     }
 })
 
