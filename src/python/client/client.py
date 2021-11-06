@@ -21,20 +21,22 @@ def getUser(id, stub):
     except grpc.RpcError as error:
         print("Error al obtener el user con ID "+str(id)+": "+str(error.code()))
 
-def createUser(name, stub):
-    request = UserDTO(name=name)
+def createUser(user, stub):
+    request = UserDTO(name=user["name"])
     try:
         response = stub.CreateUser(request)
         print("Created user, response: "+str(response))
     except grpc.RpcError as error:
-        print("Error al crear el user "+str(name)+": "+str(error.code()))
+        print("Error al crear el user "+str(user)+": "+str(error.code()))
 
 def readStream(id, stub):
     request = Id(id=id)
     try:
         response = stub.GetData(request)
+        text = ''
         for r in response:
-            print(r)
+            text += r.data.decode('utf-8')
+        print("Response = "+str(text))
     except grpc.RpcError as error:
         print("Error al leer streaming del server para el usuario "+str(id)+": "+str(error.code()))  
 
@@ -44,7 +46,7 @@ def writeStream(id, text, stub):
         response = stub.AddData(iterator)
         print("Response: "+str(response))
     except grpc.RpcError as error:
-        print("Error al escribir streaming del client para el usuario "+str(id)+": "+str(error))      
+        print("Error al escribir streaming del client para el usuario "+str(id)+": "+str(error.code()))      
         
 def exchangeStream(id, text, stub):
     try:
@@ -65,28 +67,11 @@ def run():
     getAllUsers(stub)
     getUser(1, stub)
     getUser(-1, stub)
-    createUser("Juan", stub)
+    createUser({"name":"Juan"}, stub)
+    writeStream(1,"Text from the python client", stub)
     readStream(1, stub)
-    writeStream(1,"Text from python", stub)
     exchangeStream(1, "exchange string", stub)
+    getUser(1,stub)
 
 if __name__ == '__main__':
     run()
-'''
-getAllUsers()
-getUser(1)
-getUser(-1)
-createUser("Juan")
-readStream(1)
-writeStream(1,"Text from python")
-'''
-# exchangeStream(1, "exchange string")
-# getUser(1)
-
-
-# https://www.cloudbees.com/blog/using-grpc-in-python
-# https://technokeeda.com/python/streaming-grpc-in-python/
-# https://www.velotio.com/engineering-blog/grpc-implementation-using-python
-# https://medium.com/@michaeledenzon/a-guide-to-grpc-bidirectional-streaming-with-python-and-go-3e9aaf69c5ec
-# https://stackoverflow.com/questions/47831895/how-do-i-handle-streaming-messages-with-python-grpc
-# https://github.com/grpc/grpc/blob/v1.8.x/examples/python/route_guide/route_guide_client.py -> """The Python implementation of the gRPC route guide client."""
