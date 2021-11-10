@@ -49,5 +49,4 @@ public class UserService extends UserServiceGrpc.UserServiceImplBase{
 		return super.exchangeData(responseObserver);
 	}
 
-	
 }

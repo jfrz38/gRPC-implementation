@@ -9,10 +9,10 @@ Examples of gRPC implementation in different languages.
 
 |                          | c# | Java | Node.JS | Python |
 |--------------------------|----|------|---------|--------|
-| Unary calls              | CS |      |    CS   |   CS   |
-| Client streaming         | CS |      |    CS   |   CS   |
-| Server streaming         | CS |      |    CS   |   CS   |
-| Bidirectional streaming  | CS |      |    CS   |   CS   |
+| Unary calls              | CS |  C   |    CS   |   CS   |
+| Client streaming         | CS |  C   |    CS   |   CS   |
+| Server streaming         | CS |  C   |    CS   |   CS   |
+| Bidirectional streaming  | CS |  C   |    CS   |   CS   |
 | Interceptors             |    |      |         |        |
 | Deadlines                |    |      |         |        |
 | Cancellation             |    |      |         |        |
@@ -36,5 +36,5 @@ Examples of gRPC implementation in different languages.
 
 |                          | c# | Java | Node.JS | Python |
 |--------------------------|----|------|---------|--------|
-| Use mock DB              |    |      |    x    |        |
+| Use mock DB              |    |      | SQLite  |        |
 | Use real DB              |    |      |         |        |
