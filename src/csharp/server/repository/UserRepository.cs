@@ -33,7 +33,7 @@ namespace grpcServer
         {
             User lastUser = users.OrderBy(u => u.Id).LastOrDefault();
             int id = lastUser == null ? 1 : lastUser.Id + 1;
-            users.Add(new User{Id = id, Name = request.Name, Data = ByteString.CopyFromUtf8("")});
+            users.Add(new User{Id = id, Name = request.Name, Data = ByteString.CopyFromUtf8("character string for "+request.Name)});
             return new Empty();
         }
 
