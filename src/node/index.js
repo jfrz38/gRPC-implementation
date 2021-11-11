@@ -1,6 +1,6 @@
 const client = require("./client/client");
 
-/*client.getUser({id:1}, (error, response) => {
+client.getUser({id:1}, (error, response) => {
     if(error) console.log(error)
     else console.log(response)
 })
@@ -13,7 +13,7 @@ client.CreateUser({name:"Juan"}, (error, response) => {
 client.getAllUsers({}, (error, response) => {
     if(error) console.log(error)
     else console.log(response)
-})*/
+})
 
 getData = () => {
     let call = client.getData({id:1})
@@ -26,7 +26,7 @@ getData = () => {
     })
 }
 
-/*addData = () => {
+addData = () => {
     let call = client.addData(function(){})
     const str = "Nueva cadena de texto"
     for(const c of str){
@@ -52,9 +52,9 @@ exchangeData = () => {
     }
     call.end()
 }
-*/
-//addData()
+
+addData()
 getData()
-//exchangeData()
+exchangeData()
 
 
