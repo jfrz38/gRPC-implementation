@@ -12,7 +12,7 @@ Examples of gRPC implementation in different languages.
 | Unary calls              | CS |  CS  |    CS   |   CS   |
 | Client streaming         | CS |  CS  |    CS   |   CS   |
 | Server streaming         | CS |  CS  |    CS   |   CS   |
-| Bidirectional streaming  | CS |  C   |    CS   |   CS   |
+| Bidirectional streaming  | CS |  CS  |    CS   |   CS   |
 | Interceptors             |    |      |         |        |
 | Deadlines                |    |      |         |        |
 | Cancellation             |    |      |         |        |
