@@ -80,7 +80,7 @@ public class GrpcClient extends UserServiceGrpc.UserServiceImplBase {
 			@Override
 			public void onCompleted() {
 				finishLatch.countDown();
-				serverData(serverText);
+				System.out.println("Final data = "+serverText);
 			}
 
 		});
@@ -103,10 +103,6 @@ public class GrpcClient extends UserServiceGrpc.UserServiceImplBase {
 			requestObserver.onError(e);
 		}
 
-	}
-
-	private static void serverData(String data) {
-		System.out.println("Final data = "+data);
 	}
 	
 	private static void getData(int id) {

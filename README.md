@@ -4,14 +4,14 @@ Examples of gRPC implementation in different languages.
 
 ## Features
 
-**C = implemented on the client side**
+**C = implemented on the client side**  
 **S = implemented on the server side**
 
 |                          | c# | Java | Node.JS | Python |
 |--------------------------|----|------|---------|--------|
-| Unary calls              | CS |  C   |    CS   |   CS   |
-| Client streaming         | CS |  C   |    CS   |   CS   |
-| Server streaming         | CS |  C   |    CS   |   CS   |
+| Unary calls              | CS |  CS  |    CS   |   CS   |
+| Client streaming         | CS |  CS  |    CS   |   CS   |
+| Server streaming         | CS |  CS  |    CS   |   CS   |
 | Bidirectional streaming  | CS |  C   |    CS   |   CS   |
 | Interceptors             |    |      |         |        |
 | Deadlines                |    |      |         |        |
