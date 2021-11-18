@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+service Transform {
+	rpc Transform(stream Point) returns (stream PointResponse) {}
+}
+
+message Point {
+	Mouse mouse = 1;
+	Canvas canvas = 2;
+    string color = 3;
+}
+
+message Mouse {
+	int64 x = 1;
+	int64 y = 2;
+}
+message Canvas {
+	int64 width = 1;
+	int64 height = 2;
+}
+
+message PointResponse {
+	int64 x = 1;
+	int64 y = 2;
+	string color = 3;
+}
