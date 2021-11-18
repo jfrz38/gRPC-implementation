@@ -38,4 +38,4 @@ Examples of gRPC implementation in different languages.
 |--------------------------|----|------|---------|--------|
 | Use mock DB              |    |      | SQLite  |        |
 | Use real DB              |    |      |         |        |
-| Programs                 |    |      | [Paint](./src/node/bidirectional-painting)   |        |
+| Programs                 |    |      | [Paint](./src/node/bidirectional-painting)   |[Paint](./src/python/bidirectional-painting)|
