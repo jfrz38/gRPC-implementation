@@ -38,12 +38,12 @@ class main:
         
         response = self.stub.Transform(iterator)
         # Print gRPC line
-        for r in response:
-            if self.old_received_x and self.old_received_y:
-                self.c.create_line(self.old_received_x, self.old_received_y, r.x, r.y, 
+        r = response.next()
+        if self.old_received_x and self.old_received_y:
+            self.c.create_line(self.old_received_x, self.old_received_y, r.x, r.y, 
                                 width=self.penwidth, fill=r.color,capstyle=ROUND, smooth=True)
-            self.old_received_x = r.x
-            self.old_received_y = r.y
+        self.old_received_x = r.x
+        self.old_received_y = r.y
 
     def reset(self,e):    #reseting or cleaning the canvas 
         self.old_x = None
