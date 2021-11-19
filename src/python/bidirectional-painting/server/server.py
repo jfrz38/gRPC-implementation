@@ -19,7 +19,7 @@ class Transform(transform_pb2_grpc.TransformServicer):
                     hex = hex[1:]
                 rgb = (hex[0:2], hex[2:4], hex[4:6])
                 color = "#"+"".join(['%02X' % (255 - int(a, 16)) for a in rgb])
-                return iter([PointResponse(x=x, y=y, color=color)]) #iter([PointResponse(x=1, y=1, color=r.color)])
+                return iter([PointResponse(x=x, y=y, color=color)])
         except Exception as e:
             print("Error on the server side: "+str(e))
 
