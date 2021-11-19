@@ -23,8 +23,13 @@ server.addService(newsProto.Transform.service, {
         call.on('data', function(data){
             const x = data.canvas.width - data.mouse.x
             const y = data.canvas.height - data.mouse.y
+            let color = data.color
+            if (color.indexOf('#') === 0) {
+                color = color.slice(1);
+            }
+            color = (Number(`0x1${color}`) ^ 0xFFFFFF).toString(16).substr(1).toUpperCase()
             // Write
-            call.write({x:x, y:y, color:"#ff0000"})
+            call.write({x:x, y:y, color:"#"+color})
         })
     }
 })

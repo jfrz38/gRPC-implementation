@@ -1,8 +1,10 @@
-document.getElementById("clear").addEventListener("click", clearCanvas)
+document.getElementById("clear").addEventListener("click", clearCanvas);
+
+
 
 const canvas = document.getElementById("canvas")
 var context = canvas.getContext("2d");
-const color = "#000000"
+var color = "#000000"
 canvas.addEventListener('mousedown', onMouseDown, false)
 canvas.addEventListener('mousemove', onMouseMove, false)
 canvas.addEventListener('mouseup', onMouseUp, false)
@@ -10,6 +12,25 @@ const sizes = canvas.getBoundingClientRect();
 canvasSizes = { width: sizes.width, height: sizes.height }
 var mouseDown = 0, lastX, lastY;
 var lastReceivedX, lastReceivedY;
+
+["black", "red", "yellow", "blue", "green", "white"].forEach(color => {
+    const element = document.getElementById(color)
+    element.addEventListener("click", selectColor)
+    element.style.width = "58px"
+    element.style.height = "21px"
+    element.style.border = "none"
+    element.style.borderRadius = "4px"
+    element.style.backgroundColor = element.id
+})
+
+function selectColor(e){
+    const d = document.createElement("div")
+    d.style.color = e.target.id
+    var colors = window.getComputedStyle( document.body.appendChild(d) ).color.match(/\d+/g).map(function(a){ return parseInt(a,10); });
+    document.body.removeChild(d);
+    color = (colors.length >= 3) ? '#' + (((1 << 24) + (colors[0] << 16) + (colors[1] << 8) + colors[2]).toString(16).substr(1)) : false;
+
+}
 
 window.api.receive("paint", (data) => {
     if(!lastReceivedX) lastReceivedX = data.x
@@ -36,7 +57,6 @@ function draw(context, x, y) {
 }
 
 function clearCanvas() {
-    console.log("ENTRA CLEAR")
     context.clearRect(0, 0, canvas.width, canvas.height)
     lastReceivedX = null
     lastReceivedY = null
